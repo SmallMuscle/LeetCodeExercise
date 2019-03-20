@@ -1,2 +1,2 @@
-##### LeetCodeExercise
+### LeetCodeExercise
 Just practice, at least one question per a day, from easy to intractable ...
