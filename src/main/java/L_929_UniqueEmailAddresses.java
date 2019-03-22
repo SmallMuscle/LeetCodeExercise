@@ -51,7 +51,7 @@ public class L_929_UniqueEmailAddresses {
 
     public int numUniqueEmails(String[] emails) {
         if (null != emails && emails.length > 0) {
-            HashSet<String> set = new HashSet<>();
+            HashSet<String> set = new HashSet();
             for (int i = 0; i < emails.length; i++) {
                 if (null != emails[i] && emails[i].length() > 0) {
                     set.add(this.dealString1(emails[i]));
