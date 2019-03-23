@@ -3,6 +3,7 @@ import java.util.HashSet;
 public class L_771_JewelsAndStones {
 
     /*
+        2019.03.20
 
         You're given strings J representing the types of stones that are jewels,
         and S representing the stones you have.  Each character in S is a type
