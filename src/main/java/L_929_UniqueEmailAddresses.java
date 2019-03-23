@@ -4,6 +4,7 @@ public class L_929_UniqueEmailAddresses {
 
 
     /*
+    2019.03.21
     Every email consists of a local name and a domain name, separated
     by the @ sign.
 
@@ -54,7 +55,9 @@ public class L_929_UniqueEmailAddresses {
             HashSet<String> set = new HashSet();
             for (int i = 0; i < emails.length; i++) {
                 if (null != emails[i] && emails[i].length() > 0) {
-                    set.add(this.dealString1(emails[i]));
+                    String str = this.dealString4(emails[i]);
+                    System.out.println(str.hashCode());
+                    set.add(str);
                 }
             }
             System.out.println(set);
@@ -69,6 +72,26 @@ public class L_929_UniqueEmailAddresses {
     * dealString1、dealString3 大同小异
     * dealString2 增加处理 连续出现 . 的情况，相对于 1、3 减少 copy 次数，不确定输入的数据是否存在这种类型的。。。。
     * */
+    public String dealString4(String dest) {
+        char[] chs = new char[dest.length()];
+        int num = 0;
+        for (int i = 0; i < dest.length(); i++) {
+            if ('@' == dest.charAt(i)) {
+                for (;i < dest.length();chs[num] = dest.charAt(i), ++num, ++i);
+                break;
+            } else if ('+' == dest.charAt(i)) {
+                for (;'@' != dest.charAt(++i););
+                --i;
+                continue;
+            } else if ('.' == dest.charAt(i)) {
+                continue;
+            } else {
+                chs[num++] = dest.charAt(i);
+            }
+        }
+        return new String(chs, 0, num);
+    }
+
     public String dealString3(String dest) {
         char[] chs = dest.toCharArray();
         int num = chs.length;
