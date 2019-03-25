@@ -41,7 +41,7 @@ public class L_961_N_RepeatedElementInSize2NArray {
     // 除了要返回的那个重复的其他都唯一。。。
     public int repeatedNTimes2(int[] A) {
         if (A != null && A.length > 0) {
-            Set<Integer> set = new HashSet<>();
+            Set<Integer> set = new HashSet();
             int i;
             for (i = -1;set.add(A[++i]););  // 鄙人不才，才发现这个 。。
             return A[i];
@@ -52,7 +52,7 @@ public class L_961_N_RepeatedElementInSize2NArray {
 
     public int repeatedNTimes1(int[] A) {
         if (A != null && A.length > 0) {
-            Set<Integer> set = new HashSet<>();
+            Set<Integer> set = new HashSet();
             int i;
             for (i = 0;!set.contains(A[i]); set.add(A[i++]) );
             return A[i];
