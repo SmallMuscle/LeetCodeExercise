@@ -1,3 +1,5 @@
+import utils.PrintUtil;
+
 public class L_832_FlippinganImage {
 
     /*
@@ -48,9 +50,9 @@ public class L_832_FlippinganImage {
         System.out.println(~i & 1);
         L_832_FlippinganImage l = new L_832_FlippinganImage();
         int[][] A = {{1,1,0},{1,0,1},{0,0,0}};
-        printArra2(l.flipAndInvertImage(A));
+        PrintUtil.printArray(l.flipAndInvertImage(A));
         int[][] B = {{1,1,0,0},{1,0,0,1},{0,1,1,1},{1,0,1,0}};
-        printArra2(l.flipAndInvertImage(B));
+        PrintUtil.printArray(l.flipAndInvertImage(B));
     }
 
     public int[][] flipAndInvertImage(int[][] A) {
@@ -79,16 +81,4 @@ public class L_832_FlippinganImage {
         return A;
     }
 
-
-    public static void printArra2(int[][] A) {
-        if (A != null) {
-            for (int[] a : A) {
-                for (int b : a) {
-                    System.out.print(b + " ");
-                }
-                System.out.println();
-            }
-            System.out.println(" ---------- ");
-        }
-    }
 }
