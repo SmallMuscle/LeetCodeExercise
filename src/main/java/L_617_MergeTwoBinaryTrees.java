@@ -1,7 +1,9 @@
-import apple.laf.JRSUIUtils;
+import sun.reflect.generics.tree.Tree;
 import utils.PrintUtil;
 import utils.TreeNode;
 import utils.TreeUtil;
+
+import java.util.Vector;
 
 public class L_617_MergeTwoBinaryTrees {
 
@@ -39,17 +41,17 @@ public class L_617_MergeTwoBinaryTrees {
 
     public static void main(String[] args) {
         TreeNode t1 = new TreeNode(1);
-        t1.setLeft(new TreeNode(3));
-        t1.setRight(new TreeNode(2));
-        t1.getLeft().setLeft(new TreeNode(5));
+        t1.left = new TreeNode(3);
+        t1.right = new TreeNode(2);
+        t1.left.left = new TreeNode(5);
         TreeNode t2 = new TreeNode(2);
-        t2.setLeft(new TreeNode(1));
-        t2.setRight(new TreeNode(3));
-        t2.getLeft().setRight(new TreeNode(4));
-        t2.getRight().setRight(new TreeNode(7));
+        t2.left = new TreeNode(1);
+        t2.right = new TreeNode(3);
+        t2.left.right = new TreeNode(4);
+        t2.right.right = new TreeNode(7);
 
         PrintUtil.printTreeNode(t1);
-        System.out.println("----------");
+
         PrintUtil.printTreeNode(t2);
 
         L_617_MergeTwoBinaryTrees l = new L_617_MergeTwoBinaryTrees();
@@ -58,21 +60,22 @@ public class L_617_MergeTwoBinaryTrees {
     }
 
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
-        if (null == t1 && null == t2) {
-            return null;
-        } else if (null == t1 && null != t2) {
-            mergeTrees1(t2, t1);
-            return t2;
-        } else {
-            mergeTrees1(t1, t2);
-            return t1;
-        }
+        return mergeTrees1(t1, t2);
     }
 
     // 合并到 t1
-    public void mergeTrees1(TreeNode t1, TreeNode t2) {
-        if (null != t1 && null != t2) {
-
+    public TreeNode mergeTrees1(TreeNode t1, TreeNode t2) {
+        if (null == t1 && null == t2) {
+            return null;
+        } else if (null == t1 && null != t2) {
+            return t2;
+        } else if (null != t1 && null == t2) {
+            return t1;
+        } else {
+            t1.val = t1.val + t2.val;
+            t1.left = mergeTrees1(t1.left, t2.left);
+            t1.right = mergeTrees1(t1.right, t2.right);
+            return t1;
         }
     }
 

@@ -1,7 +1,6 @@
 package utils;
 
 
-import apple.laf.JRSUIUtils;
 
 import java.util.Vector;
 
@@ -39,6 +38,7 @@ public class PrintUtil {
         } else {
             System.out.println("null");
         }
+        printSplitResult();
     }
 
     private static void recordTreeIndex(Vector<TreeNode> vector, int[] index) {
@@ -48,14 +48,14 @@ public class PrintUtil {
         int nextRankIndex = 0;
         for (int i = 0; i < loopNum; i++) {
             TreeNode t = vector.get(i);
-            if (null != t.getLeft()) {
+            if (null != t.left) {
                 index[nextRankIndex] = 1;
-                vector.add(t.getLeft());
+                vector.add(t.left);
             }
             ++nextRankIndex;
-            if (null != t.getRight()) {
+            if (null != t.right) {
                 index[nextRankIndex] = 1;
-                vector.add(t.getRight());
+                vector.add(t.right);
             }
             ++nextRankIndex;
         }
@@ -70,7 +70,7 @@ public class PrintUtil {
         int j = 0;
         for (int i = 0; i < (1 << rank + 1) - 1; i++) {
             if (index[i] == 1) {
-                System.out.print(vector.get(j++).getVal());
+                System.out.print(vector.get(j++).val);
             } else {
                 System.out.print(" ");
             }
@@ -151,8 +151,8 @@ public class PrintUtil {
             for (int aa : a) {
                 System.out.print(aa + " ");
             }
-            System.out.println("\n ------------------ ");
         }
+        printSplitResult();
     }
 
 
@@ -163,7 +163,11 @@ public class PrintUtil {
                     System.out.print(aaa + " ");
                 System.out.println();
             }
-            System.out.println(" ------------------ ");
         }
+        printSplitResult();
+    }
+
+    public static void printSplitResult() {
+        System.out.println(" ------------------ ");
     }
 }
