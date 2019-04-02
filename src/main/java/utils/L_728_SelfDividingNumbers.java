@@ -37,30 +37,61 @@ public class L_728_SelfDividingNumbers {
     }
 
     public List<Integer> selfDividingNumbers(int left, int right) {
-        return selfDividingNumbers1(left, right);
-    }
-
-    public List<Integer> selfDividingNumbers1(int left, int right) {
         List<Integer> list = new ArrayList<Integer>();
         for (Integer i = left; i <= right; i++) {
-            if (1 == i.toString().length()) {
+            if (isSelfDividingNumber2(i)) {
                 list.add(i);
-            } else {
-                int len = i.toString().length();
-                boolean flag = true;
-                for (int j = 0; j < len; j++) {
-                    int div = (i.toString().charAt(j) - '0');
-                    if (0 == div || 0 != i % div) {
-                        flag = false;
-                        break;
-                    }
-                }
-                if (flag) {
-                    list.add(i);
-                }
             }
         }
         return list;
     }
+
+    // 1-3 时间越来越短。。。
+    private boolean isSelfDividingNumber1(Integer num) {
+        if (1 == num.toString().length()) {
+            return true;
+        } else {
+            int len = num.toString().length();
+            for (int j = 0; j < len; j++) {
+                int div = (num.toString().charAt(j) - '0');
+                if (0 == div || 0 != num % div) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    private boolean isSelfDividingNumber2(Integer num) {
+        if (1 == num.toString().length()) {
+            return true;
+        } else {
+            int tmp = num;
+            int step = 10;
+            do {
+                int n = tmp % step;
+                if (0 == n || 0 != num % n) {
+                    return false;
+                }
+                tmp /= step;
+            } while (tmp != 0);
+            return true;
+        }
+    }
+
+    private boolean isSelfDividingNumber3(Integer num) {
+        int tmp = num;
+        int step = 10;
+        do {
+            int n = tmp % step;
+            if (0 == n || 0 != num % n) {
+                return false;
+            }
+            tmp /= step;
+        } while (tmp != 0);
+        return true;
+    }
+
+
 
 }
