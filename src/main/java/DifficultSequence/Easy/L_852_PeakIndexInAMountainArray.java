@@ -1,4 +1,4 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
 public class L_852_PeakIndexInAMountainArray {
 
