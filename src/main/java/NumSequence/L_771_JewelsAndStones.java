@@ -1,4 +1,4 @@
-import java.util.HashSet;
+package NumSequence;
 
 public class L_771_JewelsAndStones {
 

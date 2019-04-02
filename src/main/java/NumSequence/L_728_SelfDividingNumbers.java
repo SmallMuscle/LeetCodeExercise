@@ -1,3 +1,5 @@
+package NumSequence;
+
 import java.util.ArrayList;
 import java.util.List;
 

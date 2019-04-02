@@ -1,6 +1,6 @@
+package DifficultSequence.Easy;
+
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.TreeSet;
 
 public class L_977_SquaresOfASortedArray {
 

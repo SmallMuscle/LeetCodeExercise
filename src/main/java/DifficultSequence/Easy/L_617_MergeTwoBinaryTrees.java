@@ -1,9 +1,7 @@
-import sun.reflect.generics.tree.Tree;
+package DifficultSequence.Easy;
+
 import utils.PrintUtil;
 import utils.TreeNode;
-import utils.TreeUtil;
-
-import java.util.Vector;
 
 public class L_617_MergeTwoBinaryTrees {
 

@@ -1,3 +1,5 @@
+package DifficultSequence.Easy;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -65,7 +67,7 @@ public class L_804_UniqueMorseCodeWords {
         return 0;
     }
 
-    public static final String[] MORSE = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",
+    public static final String[] MORSE = {".-","-...","-.-.","-..",".","..-.","--.","....", "src/main",".---","-.-",
             ".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",
             ".--","-..-","-.--","--.."};
 

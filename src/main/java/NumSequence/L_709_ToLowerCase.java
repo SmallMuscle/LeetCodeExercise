@@ -1,3 +1,5 @@
+package NumSequence;
+
 public class L_709_ToLowerCase {
 
     /*

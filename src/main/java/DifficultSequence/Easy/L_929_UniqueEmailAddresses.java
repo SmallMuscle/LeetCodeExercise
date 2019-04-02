@@ -1,3 +1,5 @@
+package DifficultSequence.Easy;
+
 import java.util.HashSet;
 
 public class L_929_UniqueEmailAddresses {
@@ -56,11 +58,11 @@ public class L_929_UniqueEmailAddresses {
             for (int i = 0; i < emails.length; i++) {
                 if (null != emails[i] && emails[i].length() > 0) {
                     String str = this.dealString4(emails[i]);
-                    System.out.println(str.hashCode());
+                    //System.out.println(str.hashCode());
                     set.add(str);
                 }
             }
-            System.out.println(set);
+            //System.out.println(set);
             return set.size();
         }
         return 0;

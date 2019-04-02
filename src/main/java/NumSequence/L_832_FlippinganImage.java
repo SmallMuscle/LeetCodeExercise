@@ -1,3 +1,5 @@
+package NumSequence;
+
 import utils.PrintUtil;
 
 public class L_832_FlippinganImage {
