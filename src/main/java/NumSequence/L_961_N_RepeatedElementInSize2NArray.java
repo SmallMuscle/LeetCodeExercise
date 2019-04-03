@@ -40,6 +40,10 @@ public class L_961_N_RepeatedElementInSize2NArray {
         System.out.println(l.repeatedNTimes2(c));
     }
 
+    public int repeatedNTimes(int[] A) {
+        return repeatedNTimes2(A);
+    }
+
     // 除了要返回的那个重复的其他都唯一。。。
     public int repeatedNTimes2(int[] A) {
         if (A != null && A.length > 0) {
