@@ -1,10 +1,7 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
-import java.util.Vector;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class L_933_NumberOfRecentCalls {
 
