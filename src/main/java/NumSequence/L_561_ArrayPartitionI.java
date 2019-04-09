@@ -1,4 +1,4 @@
-package DifficultSequence.Easy;
+package NumSequence;
 
 import java.util.Arrays;
 
