@@ -28,9 +28,29 @@ public class L_561_ArrayPartitionI {
     }
 
     public int arrayPairSum(int[] nums) {
-        return arrayPairSum1(nums);
+        return arrayPairSum2(nums);
     }
 
+
+    // inspired by Discuss
+    public int arrayPairSum2(int[] nums) {
+        if (null != nums && 0 < nums.length) {
+            int result = 0;
+            boolean flag = true;
+            int[] dirs = new int[20001];
+            for (int i = 0; i < nums.length; ++dirs[nums[i++] + 10000]);
+            for (int i = 0; i < dirs.length;) {
+                if (dirs[i] > 0) {
+                    if (flag) result += i - 10000;
+                    flag = !flag;
+                    --dirs[i];
+                }
+                if (0 == dirs[i]) ++i;
+            }
+            return result;
+        }
+        return 0;
+    }
 
 
     public int arrayPairSum1(int[] nums) {
