@@ -168,6 +168,6 @@ public class PrintUtil {
     }
 
     public static void printSplitResult() {
-        System.out.println(" ------------------ ");
+        System.out.println(" ------------------------------------------------------------------------------------------------------------ ");
     }
 }
