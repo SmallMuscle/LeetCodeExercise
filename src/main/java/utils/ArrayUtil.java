@@ -13,4 +13,8 @@ public class ArrayUtil {
         }
         return arrays;
     }
+
+    public static void copy(int[] sour, int[] dest) {
+        System.arraycopy(sour, 0, dest,0, sour.length);
+    }
 }

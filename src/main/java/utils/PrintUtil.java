@@ -1,13 +1,11 @@
 package utils;
 
-
-
 import java.util.Vector;
 
 public class PrintUtil {
 
     public static void main(String[] args) {
-
+        System.out.println(1 << 0);
     }
 
 
@@ -24,14 +22,14 @@ public class PrintUtil {
                 Vector<TreeNode> vector = new Vector();
                 vector.add(tn);
                 // 记录节点 index
-                int maxNum = (1 << depth) - 1;
+                int maxNum = (1 << depth - 1);
                 int[] index = ArrayUtil.getArray(maxNum);
                 index[0] = 1;
                 int rank = 0;
                 while(!vector.isEmpty()) {
                     printTreeBranch(depth, rank, index);
                     printTreeNodeByRank(vector, depth, rank, index);
-                    recordTreeIndex(vector, index);
+                    recordTreeIndex(vector, index, rank);
                     ++rank;
                 }
             }
@@ -41,34 +39,33 @@ public class PrintUtil {
         printSplitResult();
     }
 
-    private static void recordTreeIndex(Vector<TreeNode> vector, int[] index) {
+    private static void recordTreeIndex(Vector<TreeNode> vector, int[] index, int rank) {
         // 记录 index
-        index = ArrayUtil.initArray(index);
-        int loopNum = vector.size();
-        int nextRankIndex = 0;
+        int[] nextIndex = ArrayUtil.getArray(index.length);
+        int loopNum = 1 << rank;
+        if (loopNum > index.length) return;
+        int newPos = 0;
         for (int i = 0; i < loopNum; i++) {
-            TreeNode t = vector.get(i);
-            if (null != t.left) {
-                index[nextRankIndex] = 1;
-                vector.add(t.left);
+            if (1 == index[i]) {
+                newPos = i << 1;
+                TreeNode t = vector.remove(0);
+                if (null != t.left) {
+                    nextIndex[newPos] = 1;
+                    vector.add(t.left);
+                }
+                if (null != t.right) {
+                    nextIndex[newPos + 1] = 1;
+                    vector.add(t.right);
+                }
             }
-            ++nextRankIndex;
-            if (null != t.right) {
-                index[nextRankIndex] = 1;
-                vector.add(t.right);
-            }
-            ++nextRankIndex;
         }
-        // 删除当前层节点
-        while (--loopNum >= 0) {
-            vector.remove(loopNum);
-        }
+        ArrayUtil.copy(nextIndex, index);
     }
 
     private static void printTreeNodeByRank(Vector<TreeNode> vector, int depth, int rank, int[] index) {
         printTreeNodeForwardBlank(depth, rank);
         int j = 0;
-        for (int i = 0; i < (1 << rank + 1) - 1; i++) {
+        for (int i = 0; i < (1 << rank); i++) {
             if (index[i] == 1) {
                 System.out.print(vector.get(j++).val);
             } else {
@@ -135,8 +132,8 @@ public class PrintUtil {
                 }
                 if ((i & 1) == 1) {
                     // 弥补一位 node
-                    System.out.print(" ");
-                    printTreeNodeBetweenBlank(depth, rank);
+                    System.out.print("    ");
+                    //printTreeNodeBetweenBlank(depth, rank + 1);
                 }
                 printTreeBranchBetweenBlank(depth, rank);
             }
