@@ -15,6 +15,7 @@ public class L_589_N_aryTreePreorderTraversal {
         Given an n-ary tree, return the preorder traversal of its nodes' values.
 
         For example, given a 3-ary tree:
+            images/Example_L_589_N_aryTreePreorderTraversal.png
 
         Return its preorder traversal as: [1,3,5,6,2,4].
 
