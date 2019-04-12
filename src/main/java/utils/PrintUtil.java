@@ -17,7 +17,7 @@ public class PrintUtil {
     public static void printList(List list) {
         if (null != list) {
             for (Object o : list) {
-                System.out.println(o + " ");
+                System.out.print(o + " ");
             }
             System.out.println();
         }
