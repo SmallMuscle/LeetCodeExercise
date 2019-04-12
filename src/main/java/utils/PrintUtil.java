@@ -148,6 +148,7 @@ public class PrintUtil {
             for (int aa : a) {
                 System.out.print(aa + " ");
             }
+            System.out.println();
         }
         printSplitResult();
     }
