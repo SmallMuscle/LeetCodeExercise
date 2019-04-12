@@ -1,6 +1,5 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
-import sun.reflect.generics.tree.Tree;
 import utils.PrintUtil;
 import utils.TreeNode;
 
