@@ -1,7 +1,7 @@
 package NumSequence;
 
 import utils.PrintUtil;
-import utils.TreeNode;
+import bean.TreeNode;
 
 public class L_965_UnivaluedBinaryTree {
 

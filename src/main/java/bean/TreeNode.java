@@ -1,4 +1,4 @@
-package utils;
+package bean;
 
 public class TreeNode {
         public int val;

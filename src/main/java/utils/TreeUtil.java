@@ -1,5 +1,7 @@
 package utils;
 
+import bean.TreeNode;
+
 public class TreeUtil {
 
     public static int getTreeDepth(TreeNode tn) {

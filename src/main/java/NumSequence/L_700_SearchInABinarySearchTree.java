@@ -1,8 +1,7 @@
 package NumSequence;
 
-import sun.reflect.generics.tree.Tree;
 import utils.PrintUtil;
-import utils.TreeNode;
+import bean.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,7 +1,7 @@
 package DifficultSequence.Easy;
 
 import utils.PrintUtil;
-import utils.TreeNode;
+import bean.TreeNode;
 
 public class L_617_MergeTwoBinaryTrees {
 

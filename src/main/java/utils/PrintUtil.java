@@ -1,5 +1,8 @@
 package utils;
 
+import bean.TreeNode;
+
+import java.util.List;
 import java.util.Vector;
 
 public class PrintUtil {
@@ -11,8 +14,15 @@ public class PrintUtil {
 
 
 
-
-
+    public static void printList(List list) {
+        if (null != list) {
+            for (Object o : list) {
+                System.out.println(o + " ");
+            }
+            System.out.println();
+        }
+        printSplitResult();
+    }
 
     public static void printTreeNode(TreeNode tn) {
         if (null != tn) {
