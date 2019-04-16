@@ -52,6 +52,9 @@ public class L_811_SubdomainVisitCount {
             The input count in any count-paired domain will not exceed 10000.
             The answer output can be returned in any order.
 
+["9001 com","9001 discuss.leetcode.com","9001 leetcode.com"]
+["9001 com","9001 discuss.leetcode.com","9001 leetcode.com"]
+
      */
 
 
@@ -65,6 +68,40 @@ public class L_811_SubdomainVisitCount {
 
     public List<String> subdomainVisits(String[] cpdomains) {
         return subdomainVisits1(cpdomains);
+    }
+
+    // inspired by Discuss
+    // replace split to indexOf will be fast
+    public List<String> subdomainVisits2(String[] cpdomains) {
+        List<String> list = new ArrayList<>();
+        if (null != cpdomains && 0 < cpdomains.length) {
+            Map<String, Integer>  map = new HashMap<>();
+            for (String str : cpdomains) {
+                int index = str.indexOf(' ');
+                int times = Integer.parseInt(str.substring(0, index));
+                String domain = str.substring(index + 1);
+
+                if (map.containsKey(domain)) {
+                    map.put(domain, map.get(domain) + times);
+                } else {
+                    map.put(domain, times);
+                }
+                while (0 < domain.indexOf(".")) {
+                    domain = domain.substring(domain.indexOf(".") + 1);
+                    if (map.containsKey(domain)) {
+                        map.put(domain, map.get(domain) + times);
+                    } else {
+                        map.put(domain, times);
+                    }
+                }
+            }
+            Iterator<Map.Entry<String, Integer>> it = map.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<String, Integer> entry = it.next();
+                list.add(entry.getValue() + " " + entry.getKey());
+            }
+        }
+        return list;
     }
 
     public List<String> subdomainVisits1(String[] cpdomains) {
