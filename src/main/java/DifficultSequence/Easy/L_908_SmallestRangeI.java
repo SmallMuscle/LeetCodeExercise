@@ -1,4 +1,4 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
 public class L_908_SmallestRangeI {
 
