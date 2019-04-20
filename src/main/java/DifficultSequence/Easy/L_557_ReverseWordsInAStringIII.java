@@ -1,4 +1,4 @@
-package DifficultSequence;
+package DifficultSequence.Easy;
 
 public class L_557_ReverseWordsInAStringIII {
 
