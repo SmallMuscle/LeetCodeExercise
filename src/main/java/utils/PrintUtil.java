@@ -1,5 +1,6 @@
 package utils;
 
+import bean.ListNode;
 import bean.TreeNode;
 
 import java.util.List;
@@ -12,7 +13,24 @@ public class PrintUtil {
     }
 
 
+    public static void printArray(char[] c) {
+        if (null != c) {
+            for (char cc : c) {
+                System.out.print(cc + " ");
+            }
+            System.out.println();
+        }
+        printSplitResult();
+    }
 
+    public static void printListNode(ListNode listNode) {
+        ListNode l = listNode;
+        while (null != l) {
+            System.out.print(l.val + " ");
+            l = l.next;
+        }
+        printSplitResult();
+    }
 
     public static void printList(List list) {
         if (null != list) {
