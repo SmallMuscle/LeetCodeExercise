@@ -60,9 +60,10 @@ public class L_893_GroupsOfSpecial_EquivalentStrings {
     }
 
     public int numSpecialEquivGroups(String[] A) {
-        return numSpecialEquivGroups1(A);
+        return numSpecialEquivGroups2(A);
     }
 
+    // 超时了= =
     // 第一个字符串放在 map 里，之后的字符串每次变换判断 有没有
     // 有，下一个
     // 没有 放入 map
@@ -77,16 +78,41 @@ public class L_893_GroupsOfSpecial_EquivalentStrings {
             } else {
                 if (!set.contains(str)) {
                     StringBuilder strb = new StringBuilder(str);
-                    boolean flag = true;
-                    checkEquivalent(strb, flag);
-                    if (flag) set.add(str);
+                    StringBuilder flag = new StringBuilder("1");
+                    checkEquivalent(strb, 0, strb.length(), flag, set);
+                    if ("1".equals(flag.toString())) set.add(A[i]);
                 }
             }
         }
         return set.size();
     }
 
-    public static void checkEquivalent(StringBuilder strb, boolean flag) {
+    // 超时了= =
+    public int numSpecialEquivGroups2(String[] A) {
+        Set<String> set = new HashSet();
+        for (int i = 0; i < A.length; ++i) {
+            StringBuilder strb = new StringBuilder(A[i]);
+            StringBuilder flag = new StringBuilder("1");
+            checkEquivalent(strb, 0, strb.length(), flag, set);
+            if ("1".equals(flag.toString())) set.add(A[i]);
+        }
+        return set.size();
+    }
 
+    public static void checkEquivalent(StringBuilder strb, int start, int cur, StringBuilder flag, Set<String> set) {
+        if (start == cur) {
+            if (set.contains(strb.toString())) {
+                flag.setCharAt(0, '0');
+            }
+        } else {
+            for (int i = start; "1".equals(flag.toString()) && i < cur; i += 2) {
+                char tmp = strb.charAt(start);
+                strb.setCharAt(start, strb.charAt(i));
+                strb.setCharAt(i, tmp);
+                checkEquivalent(strb, start + 1, cur, flag, set);
+                strb.setCharAt(i, strb.charAt(start));
+                strb.setCharAt(start, tmp);
+            }
+        }
     }
 }
