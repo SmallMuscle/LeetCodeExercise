@@ -63,6 +63,17 @@ public class L_893_GroupsOfSpecial_EquivalentStrings {
         return numSpecialEquivGroups2(A);
     }
 
+    public int numSpecialEquivGroups3(String[] A) {
+        Set<String> set = new HashSet();
+        for (int i = 0; i < A.length; ++i) {
+            StringBuilder strb = new StringBuilder(A[i]);
+            StringBuilder flag = new StringBuilder("1");
+            checkEquivalent(strb, 0, strb.length(), flag, set);
+            if ("1".equals(flag.toString())) set.add(A[i]);
+        }
+        return set.size();
+    }
+
     // 超时了= =
     // 第一个字符串放在 map 里，之后的字符串每次变换判断 有没有
     // 有，下一个
