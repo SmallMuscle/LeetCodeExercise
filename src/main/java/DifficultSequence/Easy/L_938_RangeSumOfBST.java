@@ -3,6 +3,9 @@ package DifficultSequence.Easy;
 import bean.TreeNode;
 import utils.PrintUtil;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class L_938_RangeSumOfBST {
 
     /*
@@ -59,6 +62,26 @@ public class L_938_RangeSumOfBST {
 
     public int rangeSumBST(TreeNode root, int L, int R) {
         return rangeSumBST2(root, L, R);
+    }
+
+    // iterative
+    public int rangeSumBST3(TreeNode root, int L, int R) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int result = 0;
+        while (!queue.isEmpty()) {
+            TreeNode t = queue.poll();
+            if (null != t) {
+                if (t.val > R) queue.add(t.left);
+                else if (t.val < L) queue.add(t.right);
+                else {
+                    result += t.val;
+                    queue.add(t.left);
+                    queue.add(t.right);
+                }
+            }
+        }
+        return result;
     }
 
     public int rangeSumBST2(TreeNode root, int L, int R) {
