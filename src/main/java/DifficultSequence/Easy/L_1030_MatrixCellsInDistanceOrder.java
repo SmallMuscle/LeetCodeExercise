@@ -1,9 +1,6 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
 import utils.PrintUtil;
-
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class L_1030_MatrixCellsInDistanceOrder {
 
