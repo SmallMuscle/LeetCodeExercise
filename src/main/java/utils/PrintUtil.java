@@ -13,6 +13,16 @@ public class PrintUtil {
     }
 
 
+    public static void printArray(String[] s) {
+        if (null != s) {
+            for (String ss : s) {
+                System.out.print(ss + " ");
+            }
+            System.out.println();
+        }
+        printSplitResult();
+    }
+
     public static void printArray(char[] c) {
         if (null != c) {
             for (char cc : c) {
