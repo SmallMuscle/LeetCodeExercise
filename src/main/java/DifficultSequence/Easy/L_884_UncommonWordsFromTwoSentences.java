@@ -1,7 +1,6 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
 import utils.PrintUtil;
-import utils.StringUtil;
 
 import java.util.*;
 
