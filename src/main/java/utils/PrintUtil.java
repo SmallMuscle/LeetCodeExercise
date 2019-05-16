@@ -52,6 +52,19 @@ public class PrintUtil {
         printSplitResult();
     }
 
+    public static void printIntegerListsList(List<List<Integer>> list) {
+        if (null != list) {
+            for (List o : list) {
+                for (Object oo : o) {
+                    System.out.print(oo + " ");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+        printSplitResult();
+    }
+
     public static void printTreeNode(TreeNode tn) {
         if (null != tn) {
             int depth = TreeUtil.getTreeDepth(tn);
