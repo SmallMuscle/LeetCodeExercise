@@ -4,14 +4,29 @@ import bean.ListNode;
 import bean.TreeNode;
 
 import java.util.List;
+import java.util.Stack;
 import java.util.Vector;
 
 public class PrintUtil {
 
     public static void main(String[] args) {
-        System.out.println(1 << 0);
+        printBits(665772);
     }
 
+
+    public static void printBits(int num) {
+        int[] bits = new int[32];
+        for (int i = 31; i >= 0; --i) {
+            if ((num & 1) == 1) bits[i] = 1;
+            num >>= 1;
+        }
+        for (int i = 0; i < 32; ++i) {
+            if ((i % 4) == 0) System.out.print(' ');
+            System.out.print(bits[i]);
+        }
+        System.out.println();
+        printSplitResult();
+    }
 
     public static void printArray(String[] s) {
         if (null != s) {
