@@ -1,4 +1,4 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
 import utils.PrintUtil;
 
