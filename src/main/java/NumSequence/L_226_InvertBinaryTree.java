@@ -1,11 +1,10 @@
 package NumSequence;
 
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 import utils.PrintUtil;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 public class L_226_InvertBinaryTree {
 

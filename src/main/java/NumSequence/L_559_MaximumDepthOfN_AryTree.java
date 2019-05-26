@@ -1,8 +1,6 @@
 package NumSequence;
 
-import bean.Node;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import bean.Tree.N_Tree.Node;
 
 import java.util.*;
 

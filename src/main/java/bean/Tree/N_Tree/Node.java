@@ -1,4 +1,4 @@
-package bean;
+package bean.Tree.N_Tree;
 
 import java.util.List;
 

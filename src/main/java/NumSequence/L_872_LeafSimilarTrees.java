@@ -1,6 +1,6 @@
 package NumSequence;
 
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

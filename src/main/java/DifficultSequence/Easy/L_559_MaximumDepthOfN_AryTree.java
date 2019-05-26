@@ -1,6 +1,6 @@
 package DifficultSequence.Easy;
 
-import bean.Node;
+import bean.Tree.N_Tree.Node;
 
 import java.util.ArrayList;
 import java.util.List;

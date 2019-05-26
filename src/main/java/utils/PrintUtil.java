@@ -1,10 +1,9 @@
 package utils;
 
 import bean.ListNode;
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 
 import java.util.List;
-import java.util.Stack;
 import java.util.Vector;
 
 public class PrintUtil {
@@ -180,7 +179,7 @@ public class PrintUtil {
     }
 
     private static void printBlankByNum(int len) {
-        for (int i = 0; i < len; ++i) System.out.print(" ");
+        for (int i = 0; i < len; ++i) System.out.print(' ');
     }
 
     private static void printTreeBranch(int depth, int rank, int[] index) {

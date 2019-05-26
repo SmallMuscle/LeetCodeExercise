@@ -1,8 +1,7 @@
 package NumSequence;
 
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 import utils.PrintUtil;
-import utils.TreeUtil;
 
 public class L_669_TrimABinarySearchTree {
 

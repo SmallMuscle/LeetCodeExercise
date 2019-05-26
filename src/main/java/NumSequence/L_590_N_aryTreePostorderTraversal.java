@@ -1,6 +1,6 @@
 package NumSequence;
 
-import bean.Node;
+import bean.Tree.N_Tree.Node;
 import utils.PrintUtil;
 
 import java.util.ArrayList;

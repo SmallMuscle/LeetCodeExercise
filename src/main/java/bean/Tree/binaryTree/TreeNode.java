@@ -1,4 +1,4 @@
-package bean;
+package bean.Tree.binaryTree;
 
 public class TreeNode {
         public int val;

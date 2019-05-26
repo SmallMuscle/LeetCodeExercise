@@ -1,7 +1,7 @@
 package DifficultSequence.Easy;
 
 import utils.PrintUtil;
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

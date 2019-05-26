@@ -1,7 +1,6 @@
 package NumSequence;
 
-import bean.TreeNode;
-import sun.reflect.generics.tree.Tree;
+import bean.Tree.binaryTree.TreeNode;
 import utils.PrintUtil;
 
 import java.util.LinkedList;

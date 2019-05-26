@@ -1,6 +1,6 @@
 package utils;
 
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 
 public class TreeUtil {
 

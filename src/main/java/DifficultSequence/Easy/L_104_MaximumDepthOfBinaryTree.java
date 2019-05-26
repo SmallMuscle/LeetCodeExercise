@@ -1,6 +1,6 @@
 package DifficultSequence.Easy;
 
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 import utils.TreeUtil;
 
 public class L_104_MaximumDepthOfBinaryTree {

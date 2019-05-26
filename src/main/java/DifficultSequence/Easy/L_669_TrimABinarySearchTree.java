@@ -1,6 +1,6 @@
 package DifficultSequence.Easy;
 
-import bean.TreeNode;
+import bean.Tree.binaryTree.TreeNode;
 import utils.PrintUtil;
 
 public class L_669_TrimABinarySearchTree {
