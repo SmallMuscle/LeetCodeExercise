@@ -1,7 +1,6 @@
-package NumSequence;
+package DifficultSequence.Easy;
 
 import bean.Tree.QuadTree.Node;
-import utils.PrintUtil;
 
 public class L_427_ConstructQuadTree {
 
