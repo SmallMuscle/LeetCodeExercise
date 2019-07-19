@@ -65,7 +65,7 @@ public class Poj_1001_Exponentiation {
 
 
     private static final Map<Integer, byte[]> resultMap = new HashMap<Integer, byte[]>(128);
-
+    private static final byte zero = '0';
     private static final Poj_1001_Exponentiation p = new Poj_1001_Exponentiation();
 
     private static String pow(String num, Integer e) {
@@ -204,16 +204,17 @@ public class Poj_1001_Exponentiation {
         int rstIndex;
         byte a,b;
         for (int i = num2.length - 1; i >= 0; --i) {
-            rstIndex = result.length + i - num2.length;
-            a = (byte)(num2[i] - '0');
+            rstIndex = tmp.length + i - num2.length;
+            a = (byte)(num2[i] - zero);
             resetArray(tmp, 0, tmp.length);
             for (int j = num1.length - 1; j >= -1 ; --j) {
                 if (-1 == j) {
-                    tmp[rstIndex] = (byte)(carry + '0');
+                    tmp[rstIndex] = (byte)(carry + zero);
+                    carry = 0;
                 } else {
-                    b = (byte)(num1[j] - '0');
+                    b = (byte)(num1[j] - zero);
                     byte t = (byte)(a * b + carry);
-                    tmp[rstIndex] = (byte)((t % 10) + '0');
+                    tmp[rstIndex] = (byte)((t % 10) + zero);
                     carry = (byte)(t / 10);
                     --rstIndex;
                 }
@@ -222,22 +223,37 @@ public class Poj_1001_Exponentiation {
                 flag = false;
                 System.arraycopy(tmp, 0, result, 0, tmp.length);
             } else {
-                calculatePlus(result, tmp);
+                result = calculatePlus(result, tmp);
             }
         }
         return result;
     }
 
-    private static void calculatePlus(byte[] num1, byte[] num2) {
+    private static byte[] calculatePlus(byte[] num1, byte[] num2) {
         byte carry = 0;
         byte tmp;
-        for (int i = num1.length - 1; i >= 0; --i) {
-            byte a = (byte) (num1[i] - '0');
-            byte b = (byte)(num2[i] - '0');
-            tmp = (byte)(a + b + carry);
-            num1[i] = (byte)((tmp % 10) + '0');
-            carry = (byte)(tmp / 10);
+        int j = num2.length - 1;
+        if (num1.length <= num2.length) {
+            byte[] t = new byte[num2.length + 1];
+            System.arraycopy(num1, 0, t, t.length - num1.length, num1.length);
+            resetArray(t, 0, t.length - num1.length);
+            num1 = t;
         }
+        for (int i = num1.length - 1; i >= 0; --i) {
+            if (j >= 0) {
+                byte a = (byte) (num1[i] - zero);
+                byte b = (byte)(num2[j--] - zero);
+                tmp = (byte)(a + b + carry);
+                num1[i] = (byte)((tmp % 10) + zero);
+                carry = (byte)(tmp / 10);
+            } else if (0 != carry) {
+                byte a = (byte) (num1[i] - zero);
+                tmp = (byte)(a + carry);
+                num1[i] = (byte)((tmp % 10) + zero);
+                carry = 0;
+            }
+        }
+        return num1;
     }
 
     private static boolean isOne(byte[] num) {
@@ -265,6 +281,7 @@ public class Poj_1001_Exponentiation {
     private static boolean validRange(int index, int start, int end) {
         return index >= start && index <= end;
     }
+
 
     /*
 
