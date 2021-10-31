@@ -2,3 +2,10 @@
 *.iml
 target*
 *.DS_Store
+
+*.log
+logs
+
+*.syb
+
+tmp*.txt
