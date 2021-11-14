@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-public class L134_GasStation {
+public class L_134_GasStation {
 
     /**
      * question: 环形加油站，选取一个起始位置，加油去下一站，

@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-public class L650_2KeysKeyboard {
+public class L_650_2KeysKeyboard {
 
     /**
      * question: 初始有一个 A，仅存在两种操作

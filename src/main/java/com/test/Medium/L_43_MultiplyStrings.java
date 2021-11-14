@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Slf4j
-public class L43_MultiplyStrings {
+public class L_43_MultiplyStrings {
 
     /**
      * question：输入两个 String 类型的数（均为非负）

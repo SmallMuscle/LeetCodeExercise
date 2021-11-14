@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-public class L221_MaximalSquare {
+public class L_221_MaximalSquare {
 
     /**
      * 传送门：https://leetcode.com/problems/maximal-square/

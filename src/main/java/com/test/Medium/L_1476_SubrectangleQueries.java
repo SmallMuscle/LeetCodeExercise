@@ -1,6 +1,6 @@
 package com.test.Medium;
 
-public class L1476_SubrectangleQueries {
+public class L_1476_SubrectangleQueries {
 
     class SubrectangleQueries {
         private int[][] rectangle;

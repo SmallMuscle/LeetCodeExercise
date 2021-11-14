@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class L166_FractionToRecurringDecimal {
+public class L_166_FractionToRecurringDecimal {
 
     /**
      * question：已知分子 numerator 分母denominator (均为 int)

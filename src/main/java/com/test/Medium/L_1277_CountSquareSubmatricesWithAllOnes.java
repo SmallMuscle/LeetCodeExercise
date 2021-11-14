@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-public class L1277_CountSquareSubmatricesWithAllOnes {
+public class L_1277_CountSquareSubmatricesWithAllOnes {
 
    /**
     * 传送门：https://leetcode.com/problems/count-square-submatrices-with-all-ones/

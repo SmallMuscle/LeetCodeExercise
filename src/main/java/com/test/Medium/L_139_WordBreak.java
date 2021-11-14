@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-public class L139_WordBreak {
+public class L_139_WordBreak {
 
     /**
      * question：已知字符串 s 和字符串 List，
