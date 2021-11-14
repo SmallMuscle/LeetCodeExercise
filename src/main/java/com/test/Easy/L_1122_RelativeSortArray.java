@@ -1,6 +1,6 @@
 package com.test.Easy;
 
-import utils.PrintUtil;
+import com.test.utils.PrintUtil;
 
 import java.util.HashMap;
 import java.util.Iterator;
