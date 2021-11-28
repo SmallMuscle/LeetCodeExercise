@@ -46,34 +46,46 @@ public class Solution {
      * 0 0 0 0 1 1 1 0 0 0 1 0 0 0 0 0
      */
     public int largestIsland(int[][] grid) {
-        Map<Integer, Solution.Island> islands = new HashMap<>();
+        Map<Integer, Island> islands = new HashMap<>();
+        Map<Integer, Set<Integer>> linkes = new HashMap<>();
         final int n = grid.length;
         final int maxLimit = n * n;
         int[][] pointIsland = new int[n][n];
+        int[][] pointLink = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int left = j - 1;
                 int top = i - 1;
+                Set<Integer> rightLink = null;
+                Set<Integer> bottomLink = null;
                 if (1 == grid[i][j]) {
-                    Solution.Island island = null;
+                    Island island = null;
                     int islandId = -1;
-                    if (0 <= left && 1 == grid[i][left]) {
-                        island = islands.get(islandId = pointIsland[i][left]);
-                        pointIsland[i][j] = islandId;
-                        island.num++;
+                    if (0 <= left) {
+                        if (1 == grid[i][left]) {
+                            island = islands.get(islandId = pointIsland[i][left]);
+                            pointIsland[i][j] = islandId;
+                            island.num++;
+                        } else {
+                            rightLink = linkes.get(pointLink[i][left]);
+                        }
                     }
 
-                    if (0 <= top && 1 == grid[top][j]) {
-                        int topIslandId = pointIsland[top][j];
-                        Solution.Island topIsland = islands.get(topIslandId);
-                        if (null == island) {
-                            island = topIsland;
-                            pointIsland[i][j] = islandId = topIslandId;
-                            island.num++;
-                        } else if (topIsland != island) {
-                            island.num += topIsland.num;
-                            islands.remove(topIslandId);
-                            islands.put(topIslandId, island);
+                    if (0 <= top) {
+                        if (1 == grid[top][j]) {
+                            int topIslandId = pointIsland[top][j];
+                            Island topIsland = islands.get(topIslandId);
+                            if (null == island) {
+                                island = topIsland;
+                                pointIsland[i][j] = islandId = topIslandId;
+                                island.num++;
+                            } else if (topIsland != island) {
+                                island.num += topIsland.num;
+                                islands.remove(topIslandId);
+                                islands.put(topIslandId, island);
+                            }
+                        } else {
+                            bottomLink = linkes.get(pointLink[top][j]);
                         }
                     }
                     if (null == island) {
@@ -83,103 +95,76 @@ public class Solution {
                         pointIsland[i][j] = islandId;
                         island.num++;
                     }
-                    int preLeft = left - 1;
-                    if (0 <= preLeft && 1 != grid[i][left] && 1 == grid[i][preLeft]) {
-                        int neiborId = pointIsland[i][preLeft];
-                        Solution.Island leftIsland = islands.get(neiborId);
-                        if (island != leftIsland) {
-                            island.addNeiborhood(neiborId);
-                            leftIsland.addNeiborhood(islandId);
-                        }
+                    if (null != rightLink) {
+                        linkes.get(pointLink[i][left]).add(islandId);
                     }
-                    int preTop = top - 1;
-                    if (0 <= preTop && 1 != grid[top][j] && 1 == grid[preTop][j]) {
-                        int neiborId = pointIsland[preTop][j];
-                        Solution.Island topIsland = islands.get(neiborId);
-                        if (island != topIsland) {
-                            island.addNeiborhood(neiborId);
-                            topIsland.addNeiborhood(islandId);
-                        }
-                    }
-
-                    if (0 <= top && 0 <= left && 1 == grid[top][left]
-                            && 0 == grid[top][j] && 0 == grid[i][left]) {
-                        int neiborId = pointIsland[top][left];
-                        Solution.Island neiborIsland = islands.get(neiborId);
-                        island.addNeiborhood(neiborId);
-                        neiborIsland.addNeiborhood(islandId);
+                    if (null != bottomLink) {
+                        linkes.get(pointLink[top][j]).add(islandId);
                     }
                 } else {
-                    if (0 <= left && 0 <= top && 1 == grid[top][j] && 1 == grid[i][left]
-                            && 0 == grid[top][left]) {
-                        int topId = pointIsland[top][j];
-                        int leftId  = pointIsland[i][left];
-                        Solution.Island topIsland = islands.get(topId);
-                        Solution.Island leftIsland = islands.get(leftId);
-                        if (topIsland != leftIsland) {
-                            topIsland.addNeiborhood(leftId);
-                            leftIsland.addNeiborhood(topId);
+                    int right = j + 1;
+                    int bottom = i + 1;
+                    int islandLinkCount = 0;
+                    if (left >= 0) {
+                        islandLinkCount += grid[i][left];
+                    }
+                    if (right < n) {
+                        islandLinkCount += grid[i][right];
+                    }
+                    if (top >= 0) {
+                        islandLinkCount += grid[top][j];
+                    }
+                    if (bottom < n) {
+                        islandLinkCount += grid[bottom][j];
+                    }
+                    if (islandLinkCount > 1) {
+                        int linkId = 1 + linkes.size();
+                        pointLink[i][j] = linkId;
+                        Set<Integer> linkSet = new HashSet<>();
+                        linkes.put(linkId, linkSet);
+                        if (left >= 0 && 1 == grid[i][left]) {
+                            linkSet.add(pointIsland[i][left]);
+                        }
+                        if (top >= 0 && 1 == grid[top][j]) {
+                            linkSet.add(pointIsland[top][j]);
                         }
                     }
                 }
             }
         }
-        Iterator<Map.Entry<Integer, Solution.Island>> islandIterator = islands.entrySet().iterator();
         int max = 0;
-        Set<Solution.Island> filter = new HashSet<>();
-        while (islandIterator.hasNext()) {
-            Map.Entry<Integer, Solution.Island> islandEntry = islandIterator.next();
-            int islandId = islandEntry.getKey();
-            Solution.Island island = islandEntry.getValue();
-            if (! filter.contains(island)) {
-                filter.add(island);
-                if (island.hasNeiborhood()) {
-                    Iterator<Integer> neiborIdIterator = island.neiborhoods.iterator();
-                    while (neiborIdIterator.hasNext()) {
-                        int neiborId = neiborIdIterator.next();
-                        Solution.Island neiborIsland = islands.get(neiborId);
-                        neiborIdIterator.remove();
-                        if (island != neiborIsland) {
-                            neiborIsland.removeNeiborhood(islandId);
-                            int maxTmp = island.num + neiborIsland.num + 1;
-                            if (maxTmp > max) {
-                                max = maxTmp;
-                            }
-                        }
+        if (linkes.isEmpty()) {
+            Iterator<Island> islandItr = islands.values().iterator();
+            while (islandItr.hasNext()) {
+                Island island = islandItr.next();
+                if (island.num > max ) {
+                    max=  island.num;
+                }
+            }
+        } else {
+            Iterator<Set<Integer>> linkesItr = linkes.values().iterator();
+            Set<Island> filter = new HashSet<>();
+            while (linkesItr.hasNext()) {
+                int tmpMax = 0;
+                Set<Integer> islandIdSet = linkesItr.next();
+                for (Integer islandId : islandIdSet) {
+                    Island island = islands.get(islandId);
+                    if (!filter.contains(island)) {
+                        filter.add(island);
+                        tmpMax += island.num;
                     }
-                } else {
-                    int maxTmp = island.num;
-                    if (maxLimit == maxTmp) {
-                        max = island.num;
-                    } else if (++maxTmp > max) {
-                        max = maxTmp;
-                    }
+                }
+                filter.clear();
+                if (tmpMax > max) {
+                    max = tmpMax;
                 }
             }
         }
-        return 0 == max ? 1 : max;
+        return maxLimit == max ? max : max + 1;
     }
 
     class Island {
-        int num = 0;
-        Set<Integer> neiborhoods;
-
-        public boolean hasNeiborhood() {
-            return null != neiborhoods && ! neiborhoods.isEmpty();
-        }
-
-        public void addNeiborhood(int neiborhoodId) {
-            if (null == neiborhoods) {
-                neiborhoods = new HashSet();
-            }
-            neiborhoods.add(neiborhoodId);
-        }
-
-        public void removeNeiborhood(int neiborHoodId) {
-            if (null != neiborhoods) {
-                neiborhoods.remove(neiborHoodId);
-            }
-        }
+        int num;
     }
 
     @Test
@@ -205,8 +190,11 @@ public class Solution {
         PrintUtil.printArray(grid);
         max = largestIsland(grid);
         log.info("max island: {}", max);
+        grid = new int[][] {{1,0,1,0,1},{0,1,1,0,1},{1,1,1,0,0},{1,0,1,1,1},{0,0,1,1,0}};
+        PrintUtil.printArray(grid);
+        max = largestIsland(grid);
+        log.info("max island: {}", max);
     }
 
-    
 }
 
