@@ -47,6 +47,7 @@ public class Solution {
      */
     public int largestIsland(int[][] grid) {
         Map<Integer, Island> islands = new HashMap<>();
+        Map<Island, Set<Integer>> islandIds = new HashMap<>();
         Map<Integer, Set<Integer>> linkes = new HashMap<>();
         final int n = grid.length;
         final int maxLimit = n * n;
@@ -81,8 +82,14 @@ public class Solution {
                                 island.num++;
                             } else if (topIsland != island) {
                                 island.num += topIsland.num;
-                                islands.remove(topIslandId);
-                                islands.put(topIslandId, island);
+                                Set<Integer> ids = islandIds.get(topIsland);
+                                for (Integer id : ids) {
+                                    Island tmpIsland = islands.get(id);
+                                    islands.put(id, island);
+                                }
+                                ids.add(islandId);
+                                islandIds.remove(topIsland);
+                                islandIds.put(island, ids);
                             }
                         } else {
                             bottomLink = linkes.get(pointLink[top][j]);
@@ -92,6 +99,9 @@ public class Solution {
                         island = new Island();
                         islandId = islands.size();
                         islands.put(islandId, island);
+                        Set<Integer> ids = new HashSet<>();
+                        ids.add(islandId);
+                        islandIds.put(island, ids);
                         pointIsland[i][j] = islandId;
                         island.num++;
                     }
@@ -191,6 +201,10 @@ public class Solution {
         max = largestIsland(grid);
         log.info("max island: {}", max);
         grid = new int[][] {{1,0,1,0,1},{0,1,1,0,1},{1,1,1,0,0},{1,0,1,1,1},{0,0,1,1,0}};
+        PrintUtil.printArray(grid);
+        max = largestIsland(grid);
+        log.info("max island: {}", max);
+        grid = new int[][] {{1,0,0,0,1,0,1,0,1},{0,1,0,0,1,0,0,0,0},{1,0,1,0,1,1,0,0,0},{1,1,1,1,1,0,0,0,0},{1,1,0,1,0,1,1,1,0},{0,0,0,1,0,1,0,1,1},{1,1,1,1,0,0,1,1,0},{0,1,1,1,0,1,0,0,1},{1,1,1,0,1,0,1,0,1}};
         PrintUtil.printArray(grid);
         max = largestIsland(grid);
         log.info("max island: {}", max);
