@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class Solution {
@@ -47,12 +48,11 @@ public class Solution {
      */
     public int largestIsland(int[][] grid) {
         Map<Integer, Island> islands = new HashMap<>();
-        Map<Island, Set<Integer>> islandIds = new HashMap<>();
+        Map<Island, Set<Integer>> island2Id = new HashMap<>();
         Map<Integer, Set<Integer>> linkes = new HashMap<>();
         final int n = grid.length;
         final int maxLimit = n * n;
-        int[][] pointIsland = new int[n][n];
-        int[][] pointLink = new int[n][n];
+        int[][] pointIndex = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int left = j - 1;
@@ -64,52 +64,51 @@ public class Solution {
                     int islandId = -1;
                     if (0 <= left) {
                         if (1 == grid[i][left]) {
-                            island = islands.get(islandId = pointIsland[i][left]);
-                            pointIsland[i][j] = islandId;
+                            island = islands.get(islandId = pointIndex[i][left]);
+                            pointIndex[i][j] = islandId;
                             island.num++;
                         } else {
-                            rightLink = linkes.get(pointLink[i][left]);
+                            rightLink = linkes.get(pointIndex[i][left]);
                         }
                     }
 
                     if (0 <= top) {
                         if (1 == grid[top][j]) {
-                            int topIslandId = pointIsland[top][j];
+                            int topIslandId = pointIndex[top][j];
                             Island topIsland = islands.get(topIslandId);
                             if (null == island) {
                                 island = topIsland;
-                                pointIsland[i][j] = islandId = topIslandId;
+                                pointIndex[i][j] = islandId = topIslandId;
                                 island.num++;
                             } else if (topIsland != island) {
                                 island.num += topIsland.num;
-                                Set<Integer> ids = islandIds.get(topIsland);
+                                islands.put(topIslandId, island);
+                                Set<Integer> ids = island2Id.get(island);
+                                ids.addAll(island2Id.get(topIsland));
                                 for (Integer id : ids) {
-                                    Island tmpIsland = islands.get(id);
                                     islands.put(id, island);
                                 }
-                                ids.add(islandId);
-                                islandIds.remove(topIsland);
-                                islandIds.put(island, ids);
+                                island2Id.remove(topIsland);
                             }
                         } else {
-                            bottomLink = linkes.get(pointLink[top][j]);
+                            bottomLink = linkes.get(pointIndex[top][j]);
                         }
                     }
                     if (null == island) {
                         island = new Island();
                         islandId = islands.size();
                         islands.put(islandId, island);
+                        pointIndex[i][j] = islandId;
                         Set<Integer> ids = new HashSet<>();
+                        island2Id.put(island, ids);
                         ids.add(islandId);
-                        islandIds.put(island, ids);
-                        pointIsland[i][j] = islandId;
                         island.num++;
                     }
                     if (null != rightLink) {
-                        linkes.get(pointLink[i][left]).add(islandId);
+                        linkes.get(pointIndex[i][left]).add(islandId);
                     }
                     if (null != bottomLink) {
-                        linkes.get(pointLink[top][j]).add(islandId);
+                        linkes.get(pointIndex[top][j]).add(islandId);
                     }
                 } else {
                     int right = j + 1;
@@ -129,19 +128,20 @@ public class Solution {
                     }
                     if (islandLinkCount > 1) {
                         int linkId = 1 + linkes.size();
-                        pointLink[i][j] = linkId;
+                        pointIndex[i][j] = linkId;
                         Set<Integer> linkSet = new HashSet<>();
                         linkes.put(linkId, linkSet);
                         if (left >= 0 && 1 == grid[i][left]) {
-                            linkSet.add(pointIsland[i][left]);
+                            linkSet.add(pointIndex[i][left]);
                         }
                         if (top >= 0 && 1 == grid[top][j]) {
-                            linkSet.add(pointIsland[top][j]);
+                            linkSet.add(pointIndex[top][j]);
                         }
                     }
                 }
             }
         }
+
         int max = 0;
         if (linkes.isEmpty()) {
             Iterator<Island> islandItr = islands.values().iterator();
