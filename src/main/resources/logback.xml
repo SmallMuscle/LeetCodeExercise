@@ -10,7 +10,7 @@ configuration 子节点为 appender、logger、root
 
             -->
 <!--<configuration scan="true" scanPeriod="60 seconds" debug="false">-->
-<configuration scan="true" scanPeriod="60" debug="false">
+<configuration scanPeriod="60">
     <!--用于区分不同应用程序的记录-->
     <contextName>LeetCodeTest</contextName>
     <!--日志文件所在目录，如果是tomcat，如下写法日志文件会在则为${TOMCAT_HOME}/bin/logs/目录下-->
