@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class Solution {
@@ -173,42 +172,11 @@ public class Solution {
         return maxLimit == max ? max : max + 1;
     }
 
+    public int largestIslandInspiredByOfficial(int[][] grid) {
+        return 0;
+    }
     class Island {
         int num;
     }
 
-    @Test
-    public void test() {
-        int max;
-        int[][] grid = new int[][] {{0, 0}, {0, 0}};
-        PrintUtil.printArray(grid);
-        max = largestIsland(grid);
-        log.info("max island: {}", max);
-        grid = new int[][] {{0, 1}, {1, 0}};
-        PrintUtil.printArray(grid);
-        max = largestIsland(grid);
-        log.info("max island: {}", max);
-        grid = new int[][] {{1, 1}, {1, 0}};
-        PrintUtil.printArray(grid);
-        max = largestIsland(grid);
-        log.info("max island: {}", max);
-        grid = new int[][] {{1, 1}, {1, 1}};
-        PrintUtil.printArray(grid);
-        max = largestIsland(grid);
-        log.info("max island: {}", max);
-        grid = new int[][] {{0,0,0,0,0,0,0},{0,1,1,1,1,0,0},{0,1,0,0,1,0,0},{1,0,1,0,1,0,0},{0,1,0,0,1,0,0},{0,1,0,0,1,0,0},{0,1,1,1,1,0,0}};
-        PrintUtil.printArray(grid);
-        max = largestIsland(grid);
-        log.info("max island: {}", max);
-        grid = new int[][] {{1,0,1,0,1},{0,1,1,0,1},{1,1,1,0,0},{1,0,1,1,1},{0,0,1,1,0}};
-        PrintUtil.printArray(grid);
-        max = largestIsland(grid);
-        log.info("max island: {}", max);
-        grid = new int[][] {{1,0,0,0,1,0,1,0,1},{0,1,0,0,1,0,0,0,0},{1,0,1,0,1,1,0,0,0},{1,1,1,1,1,0,0,0,0},{1,1,0,1,0,1,1,1,0},{0,0,0,1,0,1,0,1,1},{1,1,1,1,0,0,1,1,0},{0,1,1,1,0,1,0,0,1},{1,1,1,0,1,0,1,0,1}};
-        PrintUtil.printArray(grid);
-        max = largestIsland(grid);
-        log.info("max island: {}", max);
-    }
-
 }
-
