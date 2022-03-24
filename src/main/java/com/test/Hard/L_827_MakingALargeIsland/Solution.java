@@ -172,11 +172,64 @@ public class Solution {
         return maxLimit == max ? max : max + 1;
     }
 
-    public int largestIslandInspiredByOfficial(int[][] grid) {
-        return 0;
-    }
     class Island {
         int num;
+    }
+
+    public int largestIslandInspiredByOfficial(int[][] grid) {
+        // 遍历 1 统计 各 land 的数量，记录在 nums 中，每个 land 使用 index 标记
+        int[] nums = new int[((grid.length * grid.length + 1) >> 1) + 2];
+        int index = 2;
+        for (int r = 0; r < grid.length; ++r)
+            for (int c = 0; c < grid.length; ++c)
+                if (1 == grid[r][c])
+                    nums[index] = countLand(grid, r, c, index++);
+        // 遍历 0 统计 0 周围非 0 land 的 nums 总和，记录 最大值
+        int max = -1;
+        for (int r = 0; r < grid.length; r++)
+            for (int c = 0; c < grid.length; c++)
+                if (0 == grid[r][c])
+                    max = Math.max(max, countLinkedLand(grid, r, c, nums));
+        return -1 == max ? nums[2] : max;
+    }
+
+    private int countLand(int[][] grid, int r, int c, int index) {
+        int rst = 1;
+        grid[r][c] = index;
+        if (0 < r && 1 == grid[r - 1][c]) {
+            rst += countLand(grid, r - 1, c , index);
+        }
+        if (grid.length - 1 > r && 1 == grid[r + 1][c]) {
+            rst += countLand(grid, r + 1, c , index);
+        }
+        if (0 < c && 1 == grid[r][c - 1]) {
+            rst += countLand(grid, r, c - 1 , index);
+        }
+        if (grid.length - 1 > c && 1 == grid[r][c + 1]) {
+            rst += countLand(grid, r, c + 1, index);
+        }
+        return rst;
+    }
+
+    private int countLinkedLand(int[][] grid, int r, int c, int[] nums) {
+        int rst = 1;
+        Set<Integer> set = new HashSet<>(4);
+        if (0 < r && 0 != grid[r - 1][c]) {
+            set.add(grid[r - 1][c]);
+        }
+        if (grid.length - 1 > r && 0 != grid[r + 1][c]) {
+            set.add(grid[r + 1][c]);
+        }
+        if (0 < c && 0 != grid[r][c - 1]) {
+            set.add(grid[r][c - 1]);
+        }
+        if (grid.length - 1 > c && 0 != grid[r][c + 1]) {
+            set.add(grid[r][c + 1]);
+        }
+        for (Integer index : set) {
+            rst += nums[index];
+        }
+        return rst;
     }
 
 }

@@ -60,6 +60,8 @@ public class SolutionTest {
     private void execTest(int [][] grid) {
         PrintUtil.printArray(grid);
         int max = CostTimeUtil.costMillisecond(() -> solution.largestIsland(grid));
-        log.info("max island: {}", max);
+        log.info("largestIsland max island: {}", max);
+        max = CostTimeUtil.costMillisecond(() -> solution.largestIslandInspiredByOfficial(grid));
+        log.info("largestIslandInspiredByOfficial max island: {}", max);
     }
 }
