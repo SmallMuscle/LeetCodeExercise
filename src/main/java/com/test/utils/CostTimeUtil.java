@@ -1,5 +1,6 @@
 package com.test.utils;
 
+import com.test.function.ExecVoid;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.function.Supplier;
@@ -12,6 +13,12 @@ public class CostTimeUtil {
         R result = supplier.get();
         log.info("cost time {} ns", System.nanoTime() - start);
         return result;
+    }
+
+    public static void costMillisecond(ExecVoid execVoid) {
+        long start = System.nanoTime();
+        execVoid.exec();
+        log.info("cost time {} ns", System.nanoTime() - start);
     }
 
 }
