@@ -10,8 +10,8 @@ import java.util.List;
 public class L_139_WordBreak {
 
     /**
-     * question：已知字符串 s 和字符串 List，
-     * 若 s 可由 List 中的字符串组合得到，返回 true
+     * question：已知字符串 s 和字符串 ListNode，
+     * 若 s 可由 ListNode 中的字符串组合得到，返回 true
      * 否则返回 false
      *
      * eg：
@@ -35,7 +35,7 @@ public class L_139_WordBreak {
      * 若匹配过则返回之前匹配果的结果，否则才遍历
      */
     //纯暴力
-    /*public boolean wordBreak(String s, List<String> wordDict) {
+    /*public boolean wordBreak(String s, ListNode<String> wordDict) {
         if (null != s && "".equals(s)) return true;
         for (String dict : wordDict) {
             String str;

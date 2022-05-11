@@ -113,7 +113,7 @@ public class L_43_MultiplyStrings {
         long[] nums2 = splitArray(num2, blockSize);
         char[] result = new char[*//*addNegative ? resultLen + 1 : *//*resultLen];
 
-        List<Long>[] resultList = new List[nums1.length + nums2.length - 1];
+        ListNode<Long>[] resultList = new ListNode[nums1.length + nums2.length - 1];
         for (int i = 0; i < resultList.length; i++) {
             resultList[i] = new LinkedList();
         }

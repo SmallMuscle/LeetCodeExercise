@@ -1,6 +1,6 @@
 package com.test.Easy;
 
-import com.test.bean.ListNode;
+import com.test.ds.list.ListNode;
 import com.test.utils.PrintUtil;
 
 public class L_237_DeleteNodeInALinkedList {
@@ -35,36 +35,36 @@ public class L_237_DeleteNodeInALinkedList {
     public static void main(String[] args) {
         L_237_DeleteNodeInALinkedList l = new L_237_DeleteNodeInALinkedList();
         l.initListNode();
-        PrintUtil.printListNode(head);
+        PrintUtil.printList(head);
         l.deleteNode(node5);
-        PrintUtil.printListNode(head);
+        PrintUtil.printList(head);
         l.initListNode();
-        PrintUtil.printListNode(head);
+        PrintUtil.printList(head);
         l.deleteNode(node1);
-        PrintUtil.printListNode(head);
+        PrintUtil.printList(head);
 
     }
 
-    private static ListNode head;
-    private static ListNode node5;
-    private static ListNode node1;
+    private static ListNode<Integer> head;
+    private static ListNode<Integer> node5;
+    private static ListNode<Integer> node1;
 
     private void initListNode() {
         head = new ListNode(4);
         node5 = new ListNode(5);
-        head.next = node5;
+        head.setNext(node5);
         node1 = new ListNode(1);
-        head.next.next = node1;
-        head.next.next.next = new ListNode(9);
+        head.getNext().setNext(node1);
+        head.getNext().getNext().setNext(new ListNode(9));
     }
 
-    public void deleteNode(ListNode node) {
+    public void deleteNode(ListNode<Integer> node) {
         deleteNode1(node);
     }
 
 
-    public void deleteNode1(ListNode node) {
-        node.val = node.next.val;
-        node.next = node.next.next;
+    public void deleteNode1(ListNode<Integer> node) {
+        node.setData(node.getNext().getData());
+        node.setNext(node.getNext().getNext());
     }
 }

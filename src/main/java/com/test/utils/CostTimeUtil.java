@@ -15,10 +15,10 @@ public class CostTimeUtil {
         return result;
     }
 
-    public static void costMillisecond(ExecVoid execVoid) {
+    public static void costMillisecond(ExecVoid execVoid, Object ... args) {
         long start = System.nanoTime();
         execVoid.exec();
-        log.info("cost time {} ns", System.nanoTime() - start);
+        log.info("cost time {} ns {}", System.nanoTime() - start, (null == args || 0 == args.length) ? "" : args[0]);
     }
 
 }

@@ -5,7 +5,7 @@ import com.test.utils.PrintUtil;
 public class L_500_KeyboardRow {
 
     /*
-        Given a List of words, return the words that can be typed using
+        Given a ListNode of words, return the words that can be typed using
         letters of alphabet on only one row's of American keyboard like
         the image below.
             com.test.images/Example_L_500_KeyboardRow.png

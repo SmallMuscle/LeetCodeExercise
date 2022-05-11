@@ -12,25 +12,57 @@ public class S_04_ReplaceBlankTest {
 
     @Test
     public void replaceBlankTest() {
-        char[] chs = null;
+        Character[] chs = null;
         execTest(chs);
-        chs = new char[] {};
+        chs = new Character[] {};
         execTest(chs);
-        chs = new char[] {' '};
+        chs = new Character[] {null, null};
         execTest(chs);
-        chs = new char[] {' ', ' ', ' '};
+        chs = new Character[] {' '};
         execTest(chs);
-        chs = new char[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.'};
+        chs = new Character[] {' ', null};
         execTest(chs);
-        chs = new char[] {' ', 'W', 'e', ' ', ' ', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.'};
+        chs = new Character[] {' ', null, null};
         execTest(chs);
-        chs = new char[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' '};
+        chs = new Character[] {' ', ' ', ' '};
         execTest(chs);
-        chs = new char[] {' ', 'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' '};
+        chs = new Character[] {' ', ' ', ' ', null, null, null, null, null};
+        execTest(chs);
+        chs = new Character[] {' ', ' ', ' ', null, null, null, null, null, null};
+        execTest(chs);
+        chs = new Character[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.'};
+        execTest(chs);
+        chs = new Character[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', null, null, null};
+        execTest(chs);
+        chs = new Character[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', null, null, null, null};
+        execTest(chs);
+        chs = new Character[] {' ', 'W', 'e', ' ', ' ', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.'};
+        execTest(chs);
+        chs = new Character[] {' ', 'W', 'e', ' ', ' ', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', null,
+                null, null, null, null, null, null, null, null};
+        execTest(chs);
+        chs = new Character[] {' ', 'W', 'e', ' ', ' ', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', null,
+                null, null, null, null, null, null, null, null, null};
+        execTest(chs);
+        chs = new Character[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' '};
+        execTest(chs);
+        chs = new Character[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' ', null, null, null,
+                null, null};
+        execTest(chs);
+        chs = new Character[] {'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' ', null, null, null,
+                null, null, null};
+        execTest(chs);
+        chs = new Character[] {' ', 'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' '};
+        execTest(chs);
+        chs = new Character[] {' ', 'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' ', null, null,
+                null, null, null, null, null};
+        execTest(chs);
+        chs = new Character[] {' ', 'W', 'e', ' ', 'a', 'r', 'e', ' ', 'h', 'a', 'p', 'p', 'y', '.', ' ', null, null,
+                null, null, null, null, null, null};
         execTest(chs);
     }
 
-    private void execTest(char[] chs) {
+    private void execTest(Character[] chs) {
         PrintUtil.printArray(chs);
         CostTimeUtil.costMillisecond(() -> solution.replaceBlankBySymbol(chs));
         PrintUtil.printArray(chs);

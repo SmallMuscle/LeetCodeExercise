@@ -1,6 +1,6 @@
 package com.test.Easy;
 
-import com.test.bean.ListNode;
+import com.test.ds.list.ListNode;
 
 public class L_876_MiddleOfTheLinkedList {
 
@@ -32,27 +32,27 @@ public class L_876_MiddleOfTheLinkedList {
 
     public static void main(String[] args) {
         L_876_MiddleOfTheLinkedList l = new L_876_MiddleOfTheLinkedList();
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next = new ListNode(6);
-        System.out.println(l.middleNode(head).val);
+        ListNode<Integer> head = new ListNode(1);
+        head.setNext(new ListNode(2));
+        head.getNext().setNext(new ListNode(3));
+        head.getNext().getNext().setNext(new ListNode(4));
+        head.getNext().getNext().getNext().setNext(new ListNode(5));
+        head.getNext().getNext().getNext().getNext().setNext(new ListNode(6));
+        System.out.println(l.middleNode(head).getData());
     }
 
-    public ListNode middleNode(ListNode head) {
+    public ListNode<Integer> middleNode(ListNode<Integer> head) {
         return middleNode1(head);
     }
 
-    public ListNode middleNode1(ListNode head) {
-        if (null == head.next) return head;
-        ListNode h = head;
-        ListNode m = head;
-        while (h.next != null) {
-            m = m.next;
-            h = h.next;
-            h = h.next;
+    public ListNode<Integer> middleNode1(ListNode<Integer> head) {
+        if (null == head.getNext()) return head;
+        ListNode<Integer> h = head;
+        ListNode<Integer> m = head;
+        while (h.getNext() != null) {
+            m = m.getNext();
+            h = h.getNext();
+            h = h.getNext();
             if (null == h) return m;
         }
         return m;

@@ -1,6 +1,6 @@
 package com.test.Easy;
 
-import com.test.bean.ListNode;
+import com.test.ds.list.ListNode;
 import com.test.utils.PrintUtil;
 
 public class L_206_ReverseLinkedList {
@@ -20,40 +20,40 @@ public class L_206_ReverseLinkedList {
 
     public static void main(String[] args) {
         L_206_ReverseLinkedList l = new L_206_ReverseLinkedList();
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
-        PrintUtil.printListNode(head);
-        PrintUtil.printListNode(l.reverseList(head));
+        ListNode<Integer> head = new ListNode(1);
+        head.setNext(new ListNode(2));
+        head.getNext().setNext(new ListNode(3));
+        head.getNext().getNext().setNext(new ListNode(4));
+        head.getNext().getNext().getNext().setNext(new ListNode(5));
+        PrintUtil.printList(head);
+        PrintUtil.printList(l.reverseList(head));
     }
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode<Integer> reverseList(ListNode<Integer> head) {
         return reverseList1(head);
     }
 
     static ListNode result = null;
 
     // recursively
-    public ListNode reverseList2(ListNode head) {
-        if (null == head || null == head.next) return head;
-        ListNode result = reverseList2(head.next);
-        head.next.next = head;
-        head.next = null;
+    public ListNode<Integer> reverseList2(ListNode<Integer> head) {
+        if (null == head || null == head.getNext()) return head;
+        ListNode result = reverseList2(head.getNext());
+        head.getNext().setNext(head);
+        head.setNext(null);
         return result;
     }
 
     // iteratively
-    public ListNode reverseList1(ListNode head) {
-        ListNode first = head;
-        ListNode second = null;
-        ListNode third = null;
+    public ListNode<Integer> reverseList1(ListNode<Integer> head) {
+        ListNode<Integer> first = head;
+        ListNode<Integer> second = null;
+        ListNode<Integer> third = null;
         for (;first != null;) {
             third = second;
             second = first;
-            first = first.next;
-            second.next = third;
+            first = first.getNext();
+            second.setNext(third);
         }
         return second;
     }
