@@ -12,4 +12,9 @@ public class ListNode<T> {
     public ListNode(T data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return null ==  data ? "" : data.toString();
+    }
 }

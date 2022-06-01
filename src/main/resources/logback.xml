@@ -26,8 +26,9 @@ configuration 子节点为 appender、logger、root
                 %logger输出日志的logger名
                 %msg：日志消息，
                 %n是换行符
-            -->
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{36} : %msg%n</pattern>
+            -->
+            <pattern>=> %msg%n</pattern>
             <!--解决乱码问题-->
             <charset>UTF-8</charset>
         </encoder>
