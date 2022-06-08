@@ -10,7 +10,7 @@ public class S_12_PrintNnumberTest {
     private S_12_PrintNnumber solution = new S_12_PrintNnumber();
 
     @Test
-    public void countOfOneInBinaryNumber() {
+    public void printNnumberTest() {
         int n = 0;
         execTest(n);
         n = -1;

@@ -12,7 +12,7 @@ public class S_13_DeleteListNodeAtO1TimeTest {
     private S_13_DeleteListNodeAtO1Time solution = new S_13_DeleteListNodeAtO1Time();
 
     @Test
-    public void countOfOneInBinaryNumber() {
+    public void deleteListNodeAtO1TimeTest() {
         LinkedList<Integer> list = null;
         execTest(list, null);
         list = new LinkedList<>();

@@ -10,7 +10,7 @@ public class S_11_PowerTest {
     private S_11_Power solution = new S_11_Power();
 
     @Test
-    public void countOfOneInBinaryNumber() {
+    public void powerTest() {
         double base = 0.0;
         int exponent = 0;
         execTest(base, exponent);

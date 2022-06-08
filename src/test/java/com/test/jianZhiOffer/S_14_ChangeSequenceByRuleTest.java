@@ -13,7 +13,7 @@ public class S_14_ChangeSequenceByRuleTest {
     private S_14_ChangeSequenceByRule solution = new S_14_ChangeSequenceByRule();
 
     @Test
-    public void countOfOneInBinaryNumber() {
+    public void changeSequenceByRuleTest() {
         int[] arrs = null;
         Function<Integer, Boolean> rule = null;
         execTest(arrs, rule);

@@ -10,7 +10,7 @@ public class S_10_CountOfOneInBinaryNumberTest {
     private S_10_CountOfOneInBinaryNumber solution = new S_10_CountOfOneInBinaryNumber();
 
     @Test
-    public void countOfOneInBinaryNumber() {
+    public void countOfOneInBinaryNumberTest() {
         int n = 0;
         execTest(n);
         n = 1;
