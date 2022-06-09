@@ -1,6 +1,7 @@
 package com.test.utils;
 
 import com.test.bean.Tree.binaryTree.TreeNode;
+import com.test.ds.list.ComplexListNode;
 import com.test.ds.list.ListNode;
 import com.test.ds.tree.BinaryTreeNode;
 
@@ -75,6 +76,15 @@ public class PrintUtil {
         ListNode node = list;
         while (null != node) {
             System.out.print(node.getData() + " ");
+            node = node.getNext();
+        }
+        printSplitResult();
+    }
+
+    public static void printList(ComplexListNode list) {
+        ComplexListNode node = list;
+        while (null != node) {
+            System.out.print(node + " ");
             node = node.getNext();
         }
         printSplitResult();
@@ -304,6 +314,7 @@ public class PrintUtil {
     }
 
     public static void printSplitResult() {
+        System.out.println();
         //System.out.println(" \n------------------------------------------------------------------------------------------------------------ ");
     }
 }
