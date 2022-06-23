@@ -86,7 +86,8 @@ public class Pile<T> {
                 boolean backSlash = false;
                 for (int nodeIndex = 0; nodeIndex < nodeNum; ++nodeIndex) {
                     appendBlank(buffer, 0 == nodeIndex ? blankNum :
-                            (subLayer == layer) ?  interval: ((blankNum + interval) << 1) - interval);
+                            (subLayer == layer) ?  interval: ((blankNum + interval) << 1)
+                                    - (((interval & 1) == 1) ? interval : interval - 1));
                     if (backSlash) {
                         buffer.append('\\');
                         appendBlank(buffer, 2 + maxLen - 1);
@@ -104,7 +105,8 @@ public class Pile<T> {
             int nodeStart = (1 << (subLayer - 1)) - 1;
             for (int nodeIndex = 0; nodeIndex < nodeNum; ++nodeIndex) {
                 appendBlank(buffer, 0 == nodeIndex ? blankNum :
-                        (subLayer == layer) ?  interval: ((blankNum + interval) << 1) - interval);
+                        (subLayer == layer) ?  interval: ((blankNum + interval) << 1)
+                                - (((interval & 1) == 1) ? interval : interval - 1));
 
                 T e = (T) data[nodeStart + nodeIndex];
                 int eLen = e.toString().length();
