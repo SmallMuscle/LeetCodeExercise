@@ -58,7 +58,7 @@ public class L_985_SumOfEvenNumbersAfterQueries {
 
     // 计算出第一次，之后根据第一次的结果进行修正
     public int[] sumEvenAfterQueries2(int[] A, int[][] queries) {
-        int[] result = ArrayUtil.getArray(queries.length);
+        int[] result = ArrayUtil.getArrayInstance(queries.length);
         A[queries[0][1]] = A[queries[0][1]] + queries[0][0];
         for (int i = 0; i < A.length; i++) {
             if ((1 & A[i]) == 0) result[0] += A[i];
@@ -88,7 +88,7 @@ public class L_985_SumOfEvenNumbersAfterQueries {
 
     // 每次 计算新值，统计一次
     public int[] sumEvenAfterQueries1(int[] A, int[][] queries) {
-        int[] result = ArrayUtil.getArray(queries.length);
+        int[] result = ArrayUtil.getArrayInstance(queries.length);
         for (int i = 0; i < A.length; ++i) {
             tmps[i] = ((1 & A[i]) == 0) ? A[i] : 0;
         }

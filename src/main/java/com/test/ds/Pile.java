@@ -57,6 +57,16 @@ public class Pile<T> {
 
     @Override
     public String toString() {
+        if (isEmpty()) return "[]";
+        else {
+            StringBuilder buffer = new StringBuilder("[");
+            for (int i = 0; i < size; i++) buffer.append(data[i]).append(", ");
+            buffer.delete(buffer.length() - 2, buffer.length());
+            return buffer.toString();
+        }
+    }
+
+    public String toTreeString() {
         if (isEmpty()) return "";
         StringBuilder buffer = new StringBuilder("\n");
         int layer = 0;

@@ -29,8 +29,11 @@ public class S_30_MinKnumberTest {
         arrs = new int[] {1,2,3,2,5,2};
         k = 3;
         execTest(arrs, k);
+        k = arrs.length;
+        execTest(arrs, k);
+        k = arrs.length + 1;
+        execTest(arrs, k);
         arrs = new int[] {1,2,3,2,2,2,5,2};
-        k = 6;
         execTest(arrs, k);
         arrs = new int[] {1,2,3,2,2,2,5,4,2};
         execTest(arrs, k);

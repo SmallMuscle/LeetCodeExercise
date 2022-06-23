@@ -16,7 +16,7 @@ public class PileTest {
         for (int i = start; i < end; i++) {
             bigPile.add(i);
         }
-        log.info("bigPile: {}", bigPile);
+        log.info("bigPile: {}", bigPile.toTreeString());
     }
 
 }

@@ -1,46 +1,45 @@
 package com.test.jianZhiOffer;
 
 import com.test.ds.Pile;
+import com.test.utils.ArrayUtil;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Arrays;
 
 @Slf4j
 public class S_30_MinKnumber {
 
     public void minKnumberByPartition(int[] arrs, int k) {
         if (null == arrs || 0 == arrs.length || k < 1 || k > arrs.length) return ;
-        int start = 0;
-        int end = arrs.length - 1;
-        int index = partition(arrs, 0, start,  end);
-        while (k != index) {
-            if (index > k) end = index - 1;
-            else start = index + 1;
-            index = partition(arrs, start, start, end);
-        }
         StringBuilder buffer = new StringBuilder();
-        for (int i = 0; i < k; i++) buffer.append(arrs[i]).append(' ');
+        if (arrs.length == k) {
+            Arrays.stream(arrs).forEach(e -> buffer.append(e).append(' '));
+        } else {
+            int start = 0;
+            int end = arrs.length - 1;
+            int index = partition(arrs, 0, start, end);
+            while (k != index) {
+                if (index > k) end = index - 1;
+                else start = index + 1;
+                index = partition(arrs, start, start, end);
+            }
+            for (int i = 0; i < k; i++) buffer.append(arrs[i]).append(' ');
+        }
         log.info("Result: {}", buffer);
     }
 
     private int partition(int[] arrs, int index, int start, int end) {
-        int tmp = arrs[index];
-        arrs[index] = arrs[end];
-        arrs[end] = tmp;
-        index = end--;
-        int sLimit = start;
-        int eLimit = end;
-        while (start < end) {
-            while (start <= eLimit && arrs[start] <= arrs[index]) ++start;
-            while (end >= sLimit && arrs[end] > arrs[index]) --end;
-            if (start < end) {
-                tmp = arrs[start];
-                arrs[start] = arrs[end];
-                arrs[end] = tmp;
+        if (start == end) return start;
+        ArrayUtil.swap(arrs, index, end);
+        int small = start;
+        for (int i = start; i < end; i++) {
+            if (arrs[i] < arrs[end]) {
+                if (small != i) ArrayUtil.swap(arrs, i, small);
+                ++small;
             }
         }
-        tmp = arrs[start];
-        arrs[start] = arrs[index];
-        arrs[index] = tmp;
-        return start;
+        ArrayUtil.swap(arrs, small, end);
+        return small;
     }
 
     public void minKnumberByPile(int[] arrs, int k) {
@@ -57,7 +56,7 @@ public class S_30_MinKnumber {
                 bigPile.add(arrs[i]);
             }
         }
-        log.info("Pile: {}", bigPile);
+        log.info("Pile: {}", bigPile.toTreeString());
         StringBuilder buffer = new StringBuilder();
         while (! bigPile.isEmpty()) {
             buffer.append(bigPile.removeHead()).append(' ');

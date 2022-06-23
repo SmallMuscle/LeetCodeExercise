@@ -48,8 +48,8 @@ public class L_1002_FindCommonCharacters {
     // 数组挺快的
     public List<String> commonChars2(String[] A) {
         List<String> list = new LinkedList<>();
-        int[] dir = ArrayUtil.getArray(26);
-        int[] var = ArrayUtil.getArray(26);
+        int[] dir = ArrayUtil.getArrayInstance(26);
+        int[] var = ArrayUtil.getArrayInstance(26);
         for (char c : A[0].toCharArray()) {
             ++dir[c - 'a'];
         }
@@ -62,7 +62,7 @@ public class L_1002_FindCommonCharacters {
                     dir[j] = dir[j] > var[j] ? var[j] : dir[j];
                 }
             }
-            ArrayUtil.initArray(var);
+            ArrayUtil.initArray(var, 0);
         }
         for (int i = 0; i < dir.length; i++) {
             while (0 != dir[i]) {

@@ -110,7 +110,7 @@ public class PrintUtil {
                 List<BinaryTreeNode> list = new LinkedList<>();
                 list.add(root);
                 int maxNum = 1 << depth - 1;
-                int[] index = ArrayUtil.getArray(maxNum);
+                int[] index = ArrayUtil.getArrayInstance(maxNum);
                 index[0] = 1;
                 int rank = 0;
                 while (! list.isEmpty()) {
@@ -135,7 +135,7 @@ public class PrintUtil {
                 vector.add(tn);
                 // 记录节点 index
                 int maxNum = (1 << depth - 1);
-                int[] index = ArrayUtil.getArray(maxNum);
+                int[] index = ArrayUtil.getArrayInstance(maxNum);
                 index[0] = 1;
                 int rank = 0;
                 while(!vector.isEmpty()) {
@@ -153,7 +153,7 @@ public class PrintUtil {
 
     private static void recordTreeIndex(List<BinaryTreeNode> list, int[] index, int rank) {
         // 记录 index
-        int[] nextIndex = ArrayUtil.getArray(index.length);
+        int[] nextIndex = ArrayUtil.getArrayInstance(index.length);
         int loopNum = 1 << rank;
         if (loopNum > index.length) return;
         int newPos = 0;
@@ -190,7 +190,7 @@ public class PrintUtil {
 
     private static void recordTreeIndex(Vector<TreeNode> vector, int[] index, int rank) {
         // 记录 index
-        int[] nextIndex = ArrayUtil.getArray(index.length);
+        int[] nextIndex = ArrayUtil.getArrayInstance(index.length);
         int loopNum = 1 << rank;
         if (loopNum > index.length) return;
         int newPos = 0;
