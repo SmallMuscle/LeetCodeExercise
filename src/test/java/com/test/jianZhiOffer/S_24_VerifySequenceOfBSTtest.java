@@ -12,7 +12,7 @@ public class S_24_VerifySequenceOfBSTtest {
     private S_24_VerifySequenceOfBST solution = new S_24_VerifySequenceOfBST();
 
     @Test
-    public void verifySequenceOfBST() {
+    public void verifySequenceOfBSTtest() {
         int[] sequence = null;
         execTest(sequence);
         sequence = new int[] {};

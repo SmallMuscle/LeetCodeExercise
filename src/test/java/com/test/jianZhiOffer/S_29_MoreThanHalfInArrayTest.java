@@ -12,7 +12,7 @@ public class S_29_MoreThanHalfInArrayTest {
     private S_29_MoreThanHalfInArray solution = new S_29_MoreThanHalfInArray();
 
     @Test
-    public void moreThanHalfInArray() {
+    public void moreThanHalfInArrayTest() {
         int[] arrs = null;
         execTest(arrs);
         arrs = new int[] {};

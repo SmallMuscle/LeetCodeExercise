@@ -10,7 +10,7 @@ public class S_31_ContinuousSubArrayMaxSumTest {
     private S_31_ContinuousSubArrayMaxSum solution = new S_31_ContinuousSubArrayMaxSum();
 
     @Test
-    public void minKnumber() {
+    public void continuousSubArrayMaxSumTest() {
         int[] arrs = null;
         execTest(arrs, 0);
         arrs = new int[] {};

@@ -12,7 +12,7 @@ public class S_26_CloneComplexListTest {
     private S_26_CloneComplexList solution = new S_26_CloneComplexList();
 
     @Test
-    public void cloneComplexList() {
+    public void cloneComplexListTest() {
         ComplexListNode<Integer> head = null;
         execTest(head);
         head = new ComplexListNode<>(1);

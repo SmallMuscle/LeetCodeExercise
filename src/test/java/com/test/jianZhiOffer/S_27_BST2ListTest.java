@@ -12,7 +12,7 @@ public class S_27_BST2ListTest {
     private S_27_BST2List solution = new S_27_BST2List();
 
     @Test
-    public void cloneComplexList() {
+    public void bst2ListTest() {
         BinaryTreeNode<Integer> root = null;
         execTest(root);
         root = new BinaryTreeNode<>(4);

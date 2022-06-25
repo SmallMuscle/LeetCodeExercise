@@ -12,7 +12,7 @@ public class S_25_FindPathInBTtest {
     private S_25_FIndPathInBT solution = new S_25_FIndPathInBT();
 
     @Test
-    public void findPathInBT() {
+    public void findPathInBTtest() {
         BinaryTreeNode<Integer> root = null;
         int expectSum = 22;
         execTest(root, expectSum);

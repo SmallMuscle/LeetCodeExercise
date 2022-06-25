@@ -12,7 +12,7 @@ public class S_23_PrintFromTop2BottomTest {
     private S_23_PrintFromTop2Bottom solution = new S_23_PrintFromTop2Bottom();
 
     @Test
-    public void printFromTop2Bottom() {
+    public void printFromTop2BottomTest() {
         BinaryTreeNode<Integer> root = null;
         execTest(root);
         root = new BinaryTreeNode<>(5);

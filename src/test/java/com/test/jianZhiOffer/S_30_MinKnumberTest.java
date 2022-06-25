@@ -10,7 +10,7 @@ public class S_30_MinKnumberTest {
     private S_30_MinKnumber solution = new S_30_MinKnumber();
 
     @Test
-    public void minKnumber() {
+    public void minKnumberTest() {
         int[] arrs = null;
         int k = 0;
         execTest(arrs, k);

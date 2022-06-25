@@ -10,7 +10,7 @@ public class S_28_PermutationTest {
     private S_28_Permutation solution = new S_28_Permutation();
 
     @Test
-    public void cloneComplexList() {
+    public void cloneComplexListTest() {
         String str = null;
         execTest(str);
         str = "";
