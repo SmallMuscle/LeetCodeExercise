@@ -16,22 +16,24 @@ public class S_34_UglyNumberTest {
         n = 0;
         execTest(n, -1);
         n = 1;
-        execTest(n, 2);
+        execTest(n, 1);
         n = 2;
-        execTest(n, 3);
+        execTest(n, 2);
         n = 3;
-        execTest(n, 4);
+        execTest(n, 3);
         n = 4;
-        execTest(n, 5);
+        execTest(n, 4);
         n = 5;
-        execTest(n, 6);
+        execTest(n, 5);
         n = 6;
-        execTest(n, 8);
+        execTest(n, 6);
         n = 7;
-        execTest(n, 9);
+        execTest(n, 8);
         n = 8;
-        execTest(n, 10);
+        execTest(n, 9);
         n = 9;
+        execTest(n, 10);
+        n = 10;
         execTest(n, 12);
     }
 
