@@ -10,7 +10,7 @@ public class S_35_FirstNotRepeatingCharTest {
     private S_35_FirstNotRepeatingChar solution = new S_35_FirstNotRepeatingChar();
 
     @Test
-    public void uglyNumberTest() {
+    public void firtNotRepeatingCharTest() {
         char[] chs = null;
         execTest(chs, '\0');
         chs = new char[] {};
@@ -27,7 +27,10 @@ public class S_35_FirstNotRepeatingCharTest {
         log.info("-------------------------------------------------");
         try {
             char result = CostTimeUtil.costMillisecond(() -> solution.firstNotRepeatingChar(chs));
-            log.info("First not repeating char is {} in chs: {}", String.valueOf(result), chs);
+            log.info("First not repeating char is {} in chs: {}", result, chs);
+            log.info("exec result {}correct.", expect == result ? "" : "in");
+            result = CostTimeUtil.costMillisecond(() -> solution.firstNotRepeatingChar1(chs));
+            log.info("First not repeating char is {} in chs: {}", result, chs);
             log.info("exec result {}correct.", expect == result ? "" : "in");
         } catch (Exception e) {
             log.error("err: ", e);
