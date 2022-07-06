@@ -29,6 +29,7 @@ public class S_37_FindFirstCommonNodeTest {
         execTest(l1, l2, l1.getNext().getNext().getNext());
         l2.getNext().getNext().setNext(new ListNode<>(7));
         execTest(l1, l2, l1.getNext().getNext().getNext());
+        execTest(l1, l1, l1);
     }
 
     public void execTest(ListNode<Integer> l1, ListNode<Integer> l2, ListNode<Integer> expect) {
