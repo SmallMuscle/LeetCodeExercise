@@ -1,5 +1,6 @@
 package com.test.jianZhiOffer;
 
+import com.test.utils.ArrayUtil;
 import com.test.utils.CostTimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -28,20 +29,9 @@ public class S_40_FindNumsAppearOnceTest {
         try {
             int[] result = CostTimeUtil.costMillisecond(() -> solution.findNumsAppearOnce(arr));
             log.info("Number {} appear onece in {}", null == result ? null : result[0] + "\t" + result[1], arr);
-            log.info("Result is {}correct.", checkResult(result, expect) ? "" : "in");
+            log.info("Result is {}correct.", ArrayUtil.equals(result, expect) ? "" : "in");
         } catch (Exception e) {
             log.error("err: ", e);
-        }
-    }
-
-    private boolean checkResult(int[] result, int[] expect) {
-        boolean resultIsBlank = null == result || 0 == result.length;
-        boolean expectIsBlank = null == expect || 0 == expect.length;
-        if (resultIsBlank) return expectIsBlank;
-        else {
-            if (expectIsBlank) return false;
-            return result[0] == expect[0] ? (result[1] == expect[1])
-                    : result[0] == expect[1] && result[1] == expect[0];
         }
     }
 
